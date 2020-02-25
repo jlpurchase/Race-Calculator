@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<created by JLP with assitance from Josh Esquer-Davis></created>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Patua One', cursive;
+            color: rgba(0, 0, 0, 0.7);
+            background-color: rgb(240, 240, 240.5);
+        }
+       
+        input {
+            margin-top:5px;
+            margin-bottom:10px;
+            font-family:'Patua One', cursive;
+            width:45px;
+        }
+
+        .switch {
+            position:relative;
+            display:inline-block;
+            width:40px;
+            height:20px;
+            background-color:white;
+            border-radius:20px;
+        }
+
+        .switch::after  {
+            content: '';
+            position:absolute;
+            width:18px;
+            height:19px;
+            border-radius: 50%;
+            background-color:black;
+            left: 1px;
+            transition: all 0.3s;
+        }       
+
+        .checkbox:checked + .switch::after {
+            left:20px;
+        }
+
+        .checkbox:checked + .switch {
+            background-color: rgb(5, 115, 119);
+        }
+
+        .checkbox{
+            display: none;
+        }
+
+        button {
+            font-family: 'Patua One', cursive;
+            color: rgb(240, 240, 240.5);
+            font-size: large;
+            border-radius: 5px;
+            background-color: rgb(5, 115, 119);
+        }
+
+        #heading {
+            text-align: left;
+            color: rgb(5, 115, 119);
+        }
+
+        p {
+            font-size: large;
+        }
+
+        #innerFormH {
+            font-size: large;
+        }
+
+        .column {
+            float: left;
+            width: 45%;
+            padding: 15px;
+        }
+
+        @media screen and (max-width: 600px){
+            .column {
+                width: 100%;
+            }
+        }
+        .goalpaceValue {
+            display: inline;
+        }
+    
+    </style>
+
+</head>
+
+<body>
+    <!-- need a form to enter
+    mileage
+    goal time-->
+
+    <h1 id='heading'>Calculate your goal pace!</h1>
+    <p id="directionKm">Directions: Enter in your desired distance in miles and time </p>
+    <input type="checkbox" id="toggle" class="checkbox" onclick="toggleSwitch()"/>
+    <label for="toggle" class="switch"></label> 
+    <text style="position:absolute";> km</text>
+    <br>
+
+    <div class="column">
+    <form id="paceForm">
+        <label for="mileage" id="distanceLabel">Distance in Miles:</label>
+        <input id="mileage" required='required' value=".5" type="number" min="0.5" step="0.01">
+        <br>
+        <div id=innerFormH>Goal Time:</div>
+        <label for="completionTimeHours">Hours:</label>
+        <input id="hours" required='required' value="0" type="number" min="0" step="1">
+        <br>
+        <label for="compeltionTimeMins">Minutes:</label>
+        <input id="minutes" required='required' value="1" type="number" min="0" max="59" step="1">
+        <br>
+        <label for="completionTimeSeconds">Seconds:</label>
+        <input id="seconds" required='required' value="0" type="number" min="0" max="59" step="1">
+        <br>
+        <br>
+        <button type="submit">Calculate my pace!</button>
+    </form>
+
+      <!--must show paces in mins/mile-->
+      <div id="goalpaceUnits">mins/mile pace:</div>
+      <span id="goalpaceValue"></span>
+    </div>
+   
+    <div class="column">
+        <form id="raceForm">
+            <label for="mileage" id="formTwoDistance">Distance in Miles:</label>
+            <input id="raceMileage" required='required' value=".5" type="number" min="0.5" step="0.01">
+            <br>
+            <div id=innerFormP>mins/mile pace:</div>                
+            <br>
+            <label for="pace">Minutes:</label>
+            <input id="mileMinutes" required='required' value="1" type="number" min="1" max="59" step="1">
+            <br>
+            <label for="compeltionTimeMins">Seconds:</label>
+            <input id="mileSeconds" required='required' value="0" type="number" min="0" max="59" step="1">
+            <br>
+            <br>
+            <button id="button2" type="submit">Calculate my race time!</button>
+        </form>
+        
+        <div id="raceTimeUnits">Race Completion Time:</div>
+        <span id="raceTime"></span>
+         </div>
+
+    <br>
+
+  
+
+
+
+    <br>
+    <div>
+        <img src="\\okcdatw01\users\jaynee.purchase\Documents\imagery/flyingshoe.png" alt="winged shoes"
+            style="max-width:10%;height:auto; position:absolute; bottom:10px; right:10px;">
+    </div>
+    <script src="./pacesCalc.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.js"></script>
+    
+</body>
+
+</html>
